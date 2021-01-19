@@ -9,7 +9,7 @@ int main(int argc, char ** argv )
 	if( child == 0 )
 	{
 		char * const eargv[] = {"ls", "-la", NULL };
-		execvp(eargv[0], eargv); 
+		execvp(eargv[0], eargv);
 	} else {
 		wait(NULL);
 		fprintf(stderr, "PARENT: child done\n");
