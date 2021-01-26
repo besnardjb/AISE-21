@@ -15,7 +15,7 @@ double get_time()
 }
 
 
-#define SIZE 16
+#define SIZE 128
 
 struct msg_t
 {
@@ -65,7 +65,7 @@ int main( int argc, char ** argv )
 		for( i = 1 ; i <= NUM_MSG ; i++)
 		{
 			m.data[0] = i;
-		        m.type = 2;	
+		    m.type = 2;	
 			double start = get_time();
 			int ret = msgsnd(file, &m, SIZE*sizeof(int), 0);
 
