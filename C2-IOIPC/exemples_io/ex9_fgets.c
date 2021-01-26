@@ -1,13 +1,11 @@
 #include <stdio.h>
-
+#include <string.h>
 
 int main(int argc, char ** argv)
 {
-	if(argc != 2)
-	{
-		printf("USAGE %s [PATH]\n", argv[0]);
+
+	if( argc != 2 )
 		return 1;
-	}
 
 	FILE * fd = fopen(argv[1], "r");
 
@@ -18,26 +16,33 @@ int main(int argc, char ** argv)
 
 
 	char buff[500];
-	size_t cnt;
+	char * ret;
+	int cnt = 0;
 
-	while( 1 )
+	while(1)
 	{
-		cnt = fread(buff, sizeof(char), 499, fd);
-		if( cnt == 0)
+		ret = fgets(buff, 500, fd);
+
+		if(ret == NULL)
 		{
 			if( feof(fd) )
 			{
+				/* EOF all OK*/
 				break;
 			}
 			else
 			{
-				perror("fread");
+				/* Error */
+				perror("fgets");
 				return 1;
 			}
 		}
 
 		/* USE your buff here */
+		fprintf(stdout, "%d : %s", ++cnt, buff );
 	}
+
+
 
 
 	fclose(fd);
