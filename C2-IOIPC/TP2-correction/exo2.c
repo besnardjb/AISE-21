@@ -39,11 +39,12 @@ int main(int argc, char const *argv[])
 
         /* Replace STDOUT with write end of the pipe */
         dup2(pipefd[1], STDOUT_FILENO);
+        /* STDOUT is the PIPE ! printf -> PIPE */
         close(pipefd[0]);
         close(pipefd[1]);
 
-        char * echo[] = {"echo", "8+4", NULL};
-        execvp(echo[0], echo);
+        fprintf(stderr, "COUCOU LES GARS\n");
+        printf("8+4\n");
 
     }
     else
