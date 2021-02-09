@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
 		abort();
 	}
 
-	void *p = mmap(NULL, 4096, PROT_READ, MAP_FILE | MAP_SHARED, fd, 0);
+	void *p = mmap(NULL, 64, PROT_READ, MAP_FILE | MAP_SHARED, fd, 0);
 	if(p == MAP_FAILED)
 	{
 		printf("mmap(): %s\n", strerror(errno));
 	}
 
 	int pid = -1;
-	memcpy(&pid, p+1024, sizeof(pid_t));
+	memcpy(&pid, p, sizeof(pid_t));
 
 	kill(pid, SIGUSR1);
 	munmap(p, 64);
