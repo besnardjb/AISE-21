@@ -1,7 +1,5 @@
-FROM debian
+FROM alpine
 
-RUN apt-get update && apt-get install nginx -y && apt-get clean
+RUN apk add vim
 
-EXPOSE 80/tcp
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["vim"]
