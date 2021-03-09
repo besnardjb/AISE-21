@@ -16,7 +16,7 @@ static int key_notify(struct notifier_block *nblock, unsigned long kcode, void *
 
 		   if(param->down)
 		   {
-			   printk(KERN_INFO "KEY %d PRESSED !");
+			   printk(KERN_INFO "KEY %d PRESSED !", param->value);
 		   }
 
 	}
